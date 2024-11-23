@@ -4,8 +4,8 @@ import Stream.API.Optional.Stream.API.and.Optional.Employee;
 import Stream.API.Optional.Stream.API.and.Optional.exception.EmployeeAlreadyAddedException;
 import Stream.API.Optional.Stream.API.and.Optional.exception.EmployeeNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
+
 
 
 @Service
@@ -18,8 +18,12 @@ public class ServiceEmployeeImpl implements ServiceEmployee {
     }
 
     @Override
-    public Employee add(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee add(String firstName, String lastName, int salary, int departmentId) {
+        Employee employee = new Employee(
+                firstName,
+                lastName,
+                salary,
+                departmentId);
         if (employees.containsKey(employee.getFullName())) {
             throw new EmployeeAlreadyAddedException();
         }
@@ -50,4 +54,10 @@ public class ServiceEmployeeImpl implements ServiceEmployee {
     public Collection<Employee> findAll() {
         return Collections.unmodifiableCollection(employees.values());
     }
+
+
+    private String getKey(String firstName, String lastName) {
+        return (firstName + " " + lastName).toLowerCase();
+    }
+
 }

@@ -5,7 +5,7 @@ import Stream.API.Optional.Stream.API.and.Optional.Employee;
 import java.util.Collection;
 
 public interface ServiceEmployee {
-    Employee add(String firstName, String lastName);
+    Employee add(String firstName, String lastName, int salary, int departmentId);
     Employee remove(String firstName, String lastName);
     Employee find(String firstName, String lastName);
 

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class EmployeeAlreadyAddedException extends RuntimeException {
     public EmployeeAlreadyAddedException() {
+        super("Employee Book already contains this employee.");
     }
 
     public EmployeeAlreadyAddedException(String message) {
