@@ -21,14 +21,7 @@ public class DepartmentServiceImpl implements  DepartmentService {
 
 
     @Override
-    public Employee findEmployeeWithMaxSalary(int departmentId) {
-
-        Optional<Employee> max = serviceEmployee
-                .findAll()
-                .stream()
-                .filter(e -> e.getDepartmentId() == departmentId)
-                .max(Comparator.comparingInt(employee -> employee.getSalary()));
-
+    public Employee findEmployeeWithMaxSalary(Integer departmentId) {
         return serviceEmployee
                 .findAll()
                 .stream()
@@ -38,7 +31,7 @@ public class DepartmentServiceImpl implements  DepartmentService {
     }
 
     @Override
-    public Employee findEmployeeWithMinSalary(int departmentId) {
+    public Employee findEmployeeWithMinSalary(Integer departmentId) {
         return serviceEmployee
                 .findAll()
                 .stream()
@@ -57,7 +50,7 @@ public class DepartmentServiceImpl implements  DepartmentService {
     }
 
     @Override
-    public Collection<Employee> findEmployeesByDepartmentSortedByNameSurname(int departmentId) {
+    public Collection<Employee> findEmployeesByDepartmentSortedByNameSurname(Integer departmentId) {
         return serviceEmployee
                 .findAll()
                 .stream()

@@ -4,8 +4,11 @@ import Stream.API.Optional.Stream.API.and.Optional.Employee;
 import Stream.API.Optional.Stream.API.and.Optional.exception.EmployeeAlreadyAddedException;
 import Stream.API.Optional.Stream.API.and.Optional.exception.EmployeeNotFoundException;
 import org.springframework.stereotype.Service;
+
+import javax.naming.InvalidNameException;
 import java.util.*;
 
+import static org.apache.tomcat.util.http.parser.HttpParser.isAlpha;
 
 
 @Service
@@ -18,7 +21,7 @@ public class ServiceEmployeeImpl implements ServiceEmployee {
     }
 
     @Override
-    public Employee add(String firstName, String lastName, int salary, int departmentId) {
+    public Employee add(String firstName, String lastName, Integer salary, Integer departmentId) {
         Employee employee = new Employee(
                 firstName,
                 lastName,
@@ -33,8 +36,8 @@ public class ServiceEmployeeImpl implements ServiceEmployee {
     }
 
     @Override
-    public Employee remove(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee remove(String firstName, String lastName,Integer salary, Integer departmentId) {
+        Employee employee = new Employee(firstName, lastName, salary, departmentId);
         if (employees.containsKey(employee.getFullName())) {
             return employees.remove(employee.getFullName());
         }
@@ -42,8 +45,8 @@ public class ServiceEmployeeImpl implements ServiceEmployee {
     }
 
     @Override
-    public Employee find(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee find(String firstName, String lastName, Integer salary, Integer departmentId) {
+        Employee employee = new Employee(firstName, lastName, salary, departmentId);
         if (employees.containsKey(employee.getFullName())) {
             return employees.get(employee.getFullName());
         }
@@ -56,8 +59,5 @@ public class ServiceEmployeeImpl implements ServiceEmployee {
     }
 
 
-    private String getKey(String firstName, String lastName) {
-        return (firstName + " " + lastName).toLowerCase();
-    }
 
 }
