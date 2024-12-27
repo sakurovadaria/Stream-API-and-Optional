@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 public interface DepartmentService {
-    Employee findEmployeeWithMaxSalary(int departmentId);
+    Employee findEmployeeWithMaxSalary(Integer departmentId);
 
-    Employee findEmployeeWithMinSalary(int departmentId);
+    Employee findEmployeeWithMinSalary(Integer departmentId);
 
     Map<Integer, List<Employee>> findEmployeesByDepartmentSortedByNameSurname();
 
-    Collection<Employee> findEmployeesByDepartmentSortedByNameSurname(int departmentId);
+    Collection<Employee> findEmployeesByDepartmentSortedByNameSurname(Integer departmentId);
 
     List<String> useFlatMapTest();
 }
